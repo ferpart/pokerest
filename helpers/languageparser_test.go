@@ -12,7 +12,7 @@ func TestGetLanguage(t *testing.T) {
 		getLanguage := GetLanguage(lan)
 
 		if assert.NotEmpty(t, getLanguage) {
-			assert.Equal(t, "ja-Hrkt", getLanguage)
+			assert.Equal(t, "ja-Hrk", getLanguage)
 		}
 	})
 }
