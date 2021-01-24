@@ -2,10 +2,7 @@ on: push
 name: Test Golang
 jobs:
   test:
-    strategy:
-      matrix:
-        runs-on: [ubuntu-latest, macos-latest]
-    runs-on: ${{matrix.runs-on}}
+    runs-on: ubuntu-latest
     steps:
       - name: Use Go 1.15.6
         uses: actions/checkout@master
