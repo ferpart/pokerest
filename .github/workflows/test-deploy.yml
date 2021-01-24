@@ -1,5 +1,5 @@
 on: push
-name: Test Golang
+name: Test and deploy Golang
 jobs:
   test:
     runs-on: ubuntu-latest
