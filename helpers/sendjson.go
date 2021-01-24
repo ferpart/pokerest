@@ -10,11 +10,16 @@ import (
 // SendJSON recieves a ResponseWriter, a status, and a body then sends a json to the
 // ResponseWriter
 func SendJSON(w http.ResponseWriter, status int, body interface{}) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(status)
+	writeHeader(&w, status)
 
 	err := json.NewEncoder(w).Encode(body)
 	if err != nil {
 		log.Printf("error while encoding, %v", err)
 	}
+}
+
+func writeHeader(w *http.ResponseWriter, status int) {
+	(*w).Header().Set("Content-Type", "application/json")
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+	(*w).WriteHeader(status)
 }

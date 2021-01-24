@@ -2,6 +2,7 @@
 package helpers
 
 import (
+	"fmt"
 	"encoding/json"
 	log "github.com/sirupsen/logrus"
 	"net/http"
@@ -9,8 +10,9 @@ import (
 
 // GetLanguage verifies if language exists and returns the name of the language.
 // In case the language does not exist, it will return an empty string.
-func GetLanguage(res string) string {
-	response, err := http.Get("https://pokeapi.co/api/v2/language/" + res)
+func GetLanguage(res interface{}) string {
+	url := fmt.Sprintf("https://pokeapi.co/api/v2/language/%v", res)
+	response, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
 	}
