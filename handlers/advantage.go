@@ -55,6 +55,7 @@ func Advantage(w http.ResponseWriter, r *http.Request) {
 		advantage.Total = advantage.DamageTo - advantage.DamageFrom
 
 		if advantage.Total > 0 {
+			advantage.Advantage = true
 			advantage.Description = poke1.Name + " has advantage over " + poke2.Name
 		} else if advantage.Total < 0 {
 			advantage.Description = poke1.Name + " does't have advantage over " + poke2.Name
