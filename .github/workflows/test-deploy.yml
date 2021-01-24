@@ -35,3 +35,22 @@ jobs:
           tags: ferpart/pokemon-rest-go:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: deploy to ClusterConfig
+        uses: steebchen/kubectl@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        with:
+          args: set image --record deployments/pokemonrest-deployment pokemonrest=docker.io/ferpart/pokemon-rest-go:latest
+      - name: verify deployment
+        uses: steebchen/kubectl@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          KUBECTL_VERSION: '1.15'
+        with:
+          args: '"rollout status deployments/pokemonrest-deployment"'
