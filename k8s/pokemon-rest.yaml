@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokemonrest-deployment
+  labels:
+    app: pokemonrest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pokemonrest
+  template:
+    metadata:
+      labels:
+        app: pokemonrest
+    spec:
+      containers:
+        - name: pokemonrest
+          image: docker.io/ferpart/pokemon-rest-go
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pokemonrest-entrypoint
+spec:
+  selector:
+    app: pokemonrest
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      nodePort: 30001
+  type: LoadBalancer
