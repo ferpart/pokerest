@@ -4,7 +4,7 @@ jobs:
   test:
     strategy:
       matrix:
-        runs-on: [ubuntu-latest, windows-latest, macos-latest]
+        runs-on: [ubuntu-latest, macos-latest]
     runs-on: ${{matrix.runs-on}}
     steps:
       - name: Use Go 1.15.6
