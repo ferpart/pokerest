@@ -15,6 +15,7 @@ import (
 //		- Total:	   is the difference between the DamageTo and DamageFrom.
 //		- Description: is the description of the shown results.
 type hasAdvantage struct {
+	Name		string  `json:"name"`
 	Advantage   bool    `json:"advantage"`
 	DamageTo    float64 `json:"damageTo"`
 	DamageFrom  float64 `json:"damageFrom"`
@@ -39,7 +40,8 @@ func Advantage(w http.ResponseWriter, r *http.Request) {
 	pokeNames := strings.Split(r.URL.Query().Get(pokeKey), ",")
 	pokeArr := helpers.GetPokemon(pokeNames)
 	advantage := hasAdvantage{
-		Description: "No pokemon were given",
+		Name:			"Advantage",
+		Description: 	"No pokemon were given",
 	}
 	if len(pokeArr) >= 2 {
 		poke1, poke2 := pokeArr[0], pokeArr[1]
