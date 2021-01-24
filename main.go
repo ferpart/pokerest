@@ -1,5 +1,5 @@
 // Package main is the entrypoint to the RESTful api. It creates the server and hosts it with a
-// goroutine. The server can be stopped with a system interrupt
+// goroutine. The server can be stopped with a system interrupt.
 package main
 
 import (
