@@ -1,0 +1,15 @@
+on: push
+name: Test Golang
+jobs:
+  checks:
+    name: run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Go 1.15.6
+        uses: actions/checkout@master
+
+      - name: run
+        uses: cedrickring/golang-action@1.6.0
+        env: GO111MODULE=on
+        with:
+          args: make test
