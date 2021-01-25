@@ -1,0 +1,7 @@
+export GITHUB_TOKEN=<github-access-token>
+export TF_VAR_DOCKERHUB_USERNAME=<dockerhub-username>
+export TF_VAR_DOCKERHUB_TOKEN=<dockerhub-token>
+export TF_VAR_AWS_ACCESS_KEY_ID=<aws-access-key-id>
+export TF_VAR_AWS_SECRET_KEY=<aws-secret-key>
+export TF_VAR_AWS_DEFAULT_REGION=<aws-region>
+export TF_VAR_KUBE_CONFIG_DATA=<base64-encoded .kube/config>
