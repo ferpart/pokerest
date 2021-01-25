@@ -82,13 +82,13 @@ Pokerest uses the [PokéApi](https://pokeapi.co/) for doing two things depending
 
 The program has a total of 3 packages each documented bellow:
 
-- [main](https://github.com/ferpart/pokerest/tree/master/Docs/main.md)
-- [handlers](https://github.com/ferpart/pokerest/tree/master/Docs/handlers.md)
-- [helpers](https://github.com/ferpart/pokerest/tree/master/Docs/helpers.md)
+- [main](https://github.com/ferpart/pokerest/tree/master/docs/main.md)
+- [handlers](https://github.com/ferpart/pokerest/tree/master/docs/handlers.md)
+- [helpers](https://github.com/ferpart/pokerest/tree/master/docs/helpers.md)
 
 The requests have to be called in the following manner:
 
-- [requests](https://github.com/ferpart/pokerest/tree/master/Docs/requests.md)
+- [requests](https://github.com/ferpart/pokerest/tree/master/docs/requests.md)
 
 ## Testing
 
