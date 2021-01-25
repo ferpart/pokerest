@@ -2,7 +2,7 @@
 
 The api specification can be seen in both `json` and `yaml` format in the following urls:
 
-- [json](https://github.com/ferpart/pokerest/blob/master/Docs/pokerest.json)
+- [json](https://github.com/ferpart/pokerest/blob/master/docs/pokerest.json)
 - [yaml](https://github.com/ferpart/pokerest/blob/master/docs/pokerest.yaml)
 
 ## Endpoints
