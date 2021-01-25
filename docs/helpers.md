@@ -5,11 +5,11 @@
 - [Package](#package)
 - [Functions](#functions)
   - Exported
-    - [GetLanguage](#getlanguage)
-    - [SendJSON](#sendjson)
     - [GetDamageRelations](#getdamagerelations)
+    - [GetLanguage](#getlanguage)
     - [GetMove](#getmove)
     - [GetPokemon](#getpokemon)
+    - [SendJSON](#sendjson)
   - Unexported
     - [writeHeader](#writeheader)
 - [Types](#types)
@@ -35,7 +35,16 @@ requests to the api.
 
 ## FUNCTIONS
 
-### GetLanguage
+### [GetDamageRelations](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/relationparser.go#L27)
+
+```go
+func GetDamageRelations(url string) Drelations
+```
+
+GetDamageRelations gets da damage relations from the passed url and returns
+it in a Drelations struct
+
+### [GetLanguage](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/languageparser.go#L12)
 
 ```go
 func GetLanguage(res interface{}) string
@@ -45,25 +54,7 @@ GetLanguage verifies if language exists and returns the name of the
 language. In case the language does not exist, it will return an empty
 string.
 
-### SendJSON
-
-```go
-func SendJSON(w http.ResponseWriter, status int, body interface{})
-```
-
-SendJSON recieves a ResponseWriter, a status, and a body then sends a json
-to the ResponseWriter
-
-### GetDamageRelations
-
-```go
-func GetDamageRelations(url string) Drelations
-```
-
-GetDamageRelations gets da damage relations from the passed url and returns
-it in a Drelations struct
-
-### GetMove
+### [GetMove](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/languageparser.go#L44)
 
 ```go
 func GetMove(url string, lan string) Elem
@@ -72,7 +63,7 @@ func GetMove(url string, lan string) Elem
 GetMove gets a move with the provided url and translates it to the language
 given in lan
 
-### GetPokemon
+### [GetPokemon](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/pokeparser.go#L34)
 
 ```go
 func GetPokemon(pokeNames []string) []Pokemon
@@ -81,7 +72,16 @@ func GetPokemon(pokeNames []string) []Pokemon
 GetPokemon given an array of two pokemon, will return an array of type
 Pokemon
 
-### writeHeader
+### [SendJSON](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/sendjson.go#L11)
+
+```go
+func SendJSON(w http.ResponseWriter, status int, body interface{})
+```
+
+SendJSON recieves a ResponseWriter, a status, and a body then sends a json
+to the ResponseWriter
+
+### [writeHeader](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/sendjson.go#L22)
 
 ```go
 func writeHeader(w *http.ResponseWriter, status int)
@@ -91,7 +91,7 @@ writeHeader writes the headers required for setting the application to type json
 
 ## TYPES
 
-### CompleteMove
+### [CompleteMove](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/languageparser.go#L31)
 
 ```go
 type CompleteMove struct {
@@ -103,7 +103,7 @@ type CompleteMove struct {
 CompleteMove saves the name, and all the names in different locales of a
 move
 
-### Drelations
+### [Drelations](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/relationparser.go#L10)
 
 ```go
 type Drelations struct {
@@ -114,7 +114,7 @@ type Drelations struct {
 
 Drelations stores a type, and the damage relations of said type
 
-### Elem
+### [Elem](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/pokeparser.go#L28)
 
 ```go
 type Elem struct {
@@ -125,7 +125,7 @@ type Elem struct {
 
 Elem stores a name as well as a url
 
-### Move
+### [Move](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/pokeparser.go#L23)
 
 ```go
 type Move struct {
@@ -135,7 +135,7 @@ type Move struct {
 
 Move stores an Elem containing a move's data
 
-### Pokemon
+### [Pokemon](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/pokeparser.go#L11)
 
 ```go
 type Pokemon struct {
@@ -147,7 +147,7 @@ type Pokemon struct {
 
 Pokemon stores a pokemon's name, type, and moveset
 
-### drelation
+### [drelation](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/relationparser.go#L16)
 
 ```go
 type drelation struct {
@@ -163,7 +163,7 @@ type drelation struct {
 drelation is a structure that stores all the damages made from, and two the
 type in question
 
-### language
+### [language](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/languageparser.go#L38)
 
 ```go
 type language struct {
@@ -175,7 +175,7 @@ type language struct {
 language stores in Name the name of a move in a given language, and Language
 stores the name, and url of the language being used
 
-### ptype
+### [ptype](https://github.com/ferpart/pokerest/blob/889085bd71d8f519783f1fa9f8e28287cf99fac8/helpers/pokeparser.go#L18)
 
 ```go
 type ptype struct {
