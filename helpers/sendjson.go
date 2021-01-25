@@ -17,7 +17,7 @@ func SendJSON(w http.ResponseWriter, status int, body interface{}) {
 	}
 }
 
-// writeHeader writes the headers required for setting the application to type json and 
+// writeHeader writes the headers required for setting the application to type json and
 // allowing cors
 func writeHeader(w *http.ResponseWriter, status int) {
 	(*w).Header().Set("Content-Type", "application/json")
