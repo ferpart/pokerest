@@ -10,7 +10,9 @@ The api specification can be seen in both `json` and `yaml` format in the follow
 In this project we currently have only two endpointsand these are:
 
 - [/api/advantage](#advantage)
+  - [Examples](#examples)
 - [/api/commonMoves](#common-moves)
+  - [Examples](#examples-1)
 
 We are asumming you'll be mounting the project locally so we'll use:
 

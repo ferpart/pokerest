@@ -4,7 +4,20 @@
 
 - [Package](#package)
 - [Functions](#functions)
+  - Exported
+    - [Advantage](#advantage)
+    - [CommonMoves](#commonmoves)
+  - Unexported
+    - [damageFrom](#damagefrom)
+    - [damageTo](#damageto)
+    - [getMovesInCommon](#getmovesincommon)
+    - [moveInPokemon](#moveinpokemon)
+    - [swap](#swap)
+    - [translate](#translate)
+    - [typeInDamage](#typeindamage)
 - [Types](#types)
+  - Unexported
+    - [hasAdvantage](#hasadvantage)
 
 ## Package
 
@@ -16,6 +29,8 @@ Package handlers has the methods used for handling the calls done to the
 api.
 
 ## FUNCTIONS
+
+### Advantage
 
 ```go
 func Advantage(w http.ResponseWriter, r *http.Request)
@@ -33,6 +48,8 @@ pokemon attacking is using a move of the same type as his:
   over the first one, finally if we get 0 we conclude that both pokemon are on
   equal ground.
 
+### CommonMoves
+
 ```go
 func CommonMoves(w http.ResponseWriter, r *http.Request)
 ```
@@ -42,6 +59,8 @@ given pokemon have in common. Depending on the flags given, different
 pokemon can be compared, the language of the moves can be set, and there's
 also a limit of how many moves will be sent that defaults to 10 if no custom
 limit is given.
+
+### damageFrom
 
 ```go
 func damageFrom(damager helpers.Pokemon, damagee []helpers.Drelations) float64
@@ -53,6 +72,8 @@ relations, the damge value will be multiplied to see how much damage the
 damagee will take from the damaging pokemon. This takes into consideration
 the case in which a pokemon could have two types
 
+### damageTo
+
 ```go
 func damageTo(damager []helpers.Drelations, damagee helpers.Pokemon) float64
 ```
@@ -63,6 +84,8 @@ the damage ralations, the damage value will be multiplied to see how much
 damage will be done from the damager to the damagee. This takes into
 consideretion the case in which a pokemon would have two types.
 
+### getMovesInCommon
+
 ```go
 func getMovesInCommon(pokeArr []helpers.Pokemon, lan string) []helpers.Elem
 ```
@@ -71,6 +94,8 @@ getMovesInCommon will return an array of moves that appear in all of the
 given pokemon movesets. if a language is specified, they'll be translated to
 that language, else they'll be left in english.
 
+### moveInPokemon
+
 ```go
 func moveInPokemon(a string, list []helpers.Move) bool
 ```
@@ -78,11 +103,15 @@ func moveInPokemon(a string, list []helpers.Move) bool
 moveInPokemon returns true if a string given to a is found on the given
 list.
 
+### swap
+
 ```go
 func swap(i1 int, i2 int, p *[]helpers.Pokemon)
 ```
 
 swap swaps two elements of a list.
+
+### translate
 
 ```go
 func translate(lan string, move helpers.Elem) helpers.Elem
@@ -92,6 +121,8 @@ translate takes a move, and a language paramater, with that it determines to
 which language the move should be translated to, and returns the move in the
 new language.
 
+### typeInDamage
+
 ```go
 func typeInDamage(a string, list []helpers.Elem) bool
 ```
@@ -99,6 +130,8 @@ func typeInDamage(a string, list []helpers.Elem) bool
 typeInDamage returns true if a string given to a is found on the given list
 
 ## TYPES
+
+### hasAdvantage
 
 ```go
 type hasAdvantage struct {

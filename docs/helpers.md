@@ -4,7 +4,25 @@
 
 - [Package](#package)
 - [Functions](#functions)
+  - Exported
+    - [GetLanguage](#getlanguage)
+    - [SendJSON](#sendjson)
+    - [GetDamageRelations](#getdamagerelations)
+    - [GetMove](#getmove)
+    - [GetPokemon](#getpokemon)
+  - Unexported
+    - [writeHeader](#writeheader)
 - [Types](#types)
+  - Exported
+    - [CompleteMove](#completemove)
+    - [Drelations](#drelations)
+    - [Elem](#elem)
+    - [Move](#move)
+    - [Pokemon](#pokemon)
+  - Unexported
+    - [drelation](#drelation)
+    - [language](#language)
+    - [ptype](#ptype)
 
 ## Package
 
@@ -17,6 +35,8 @@ requests to the api.
 
 ## FUNCTIONS
 
+### GetLanguage
+
 ```go
 func GetLanguage(res interface{}) string
 ```
@@ -25,6 +45,8 @@ GetLanguage verifies if language exists and returns the name of the
 language. In case the language does not exist, it will return an empty
 string.
 
+### SendJSON
+
 ```go
 func SendJSON(w http.ResponseWriter, status int, body interface{})
 ```
@@ -32,11 +54,7 @@ func SendJSON(w http.ResponseWriter, status int, body interface{})
 SendJSON recieves a ResponseWriter, a status, and a body then sends a json
 to the ResponseWriter
 
-```go
-func writeHeader(w *http.ResponseWriter, status int)
-```
-
-writeHeader writes the headers required for setting the application to type json and allowing cors
+### GetDamageRelations
 
 ```go
 func GetDamageRelations(url string) Drelations
@@ -45,12 +63,16 @@ func GetDamageRelations(url string) Drelations
 GetDamageRelations gets da damage relations from the passed url and returns
 it in a Drelations struct
 
+### GetMove
+
 ```go
 func GetMove(url string, lan string) Elem
 ```
 
 GetMove gets a move with the provided url and translates it to the language
 given in lan
+
+### GetPokemon
 
 ```go
 func GetPokemon(pokeNames []string) []Pokemon
@@ -59,7 +81,17 @@ func GetPokemon(pokeNames []string) []Pokemon
 GetPokemon given an array of two pokemon, will return an array of type
 Pokemon
 
+### writeHeader
+
+```go
+func writeHeader(w *http.ResponseWriter, status int)
+```
+
+writeHeader writes the headers required for setting the application to type json and allowing cors
+
 ## TYPES
+
+### CompleteMove
 
 ```go
 type CompleteMove struct {
@@ -71,6 +103,8 @@ type CompleteMove struct {
 CompleteMove saves the name, and all the names in different locales of a
 move
 
+### Drelations
+
 ```go
 type Drelations struct {
         Name      string    `json:"name"`
@@ -79,6 +113,8 @@ type Drelations struct {
 ```
 
 Drelations stores a type, and the damage relations of said type
+
+### Elem
 
 ```go
 type Elem struct {
@@ -89,6 +125,8 @@ type Elem struct {
 
 Elem stores a name as well as a url
 
+### Move
+
 ```go
 type Move struct {
         Move Elem `json:"move"`
@@ -96,6 +134,8 @@ type Move struct {
 ```
 
 Move stores an Elem containing a move's data
+
+### Pokemon
 
 ```go
 type Pokemon struct {
@@ -106,6 +146,8 @@ type Pokemon struct {
 ```
 
 Pokemon stores a pokemon's name, type, and moveset
+
+### drelation
 
 ```go
 type drelation struct {
@@ -121,6 +163,8 @@ type drelation struct {
 drelation is a structure that stores all the damages made from, and two the
 type in question
 
+### language
+
 ```go
 type language struct {
         Name     string `json:"name"`
@@ -130,6 +174,8 @@ type language struct {
 
 language stores in Name the name of a move in a given language, and Language
 stores the name, and url of the language being used
+
+### ptype
 
 ```go
 type ptype struct {

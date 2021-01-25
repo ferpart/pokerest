@@ -4,7 +4,11 @@
 
 - [Package](#package)
 - [Variables](#variables)
+  - Unexported
+    - [routes](#routes)
 - [Functions](#functions)
+  - Unexported
+    - [main](#main-1)
 
 ## Package
 
@@ -13,6 +17,8 @@ hosts it with a goroutine. The server can be stopped with a system
 interrupt.
 
 ## VARIABLES
+
+### routes
 
 ```go
 var routes = []struct {
@@ -36,6 +42,8 @@ var routes = []struct {
 routes is a structure containing all the routes used with this RESTful api.
 
 ## FUNCTIONS
+
+### main
 
 ```go
 func main()
