@@ -34,17 +34,7 @@ http://localhost:5000/api/advantage?pokemon=pikachu,bulbasaur
 
 ### Examples
 
-<br/>
-<p>
-    <span style="
-        background-color: green;
-        color: white;
-        border-radius: 3px;
-        padding: 4px 8px
-    "
-    >GET</span> 
-    http://localhost:5000/api/advantage?pokemon=squirtle,rhydon
-</p>
+`GET` http://localhost:5000/api/advantage?pokemon=squirtle,rhydon
 
 ```json
 {
@@ -57,17 +47,7 @@ http://localhost:5000/api/advantage?pokemon=pikachu,bulbasaur
 }
 ```
 
-<br/>
-<p>
-    <span style="
-        background-color: green;
-        color: white;
-        border-radius: 3px;
-        padding: 4px 8px
-    "
-    >GET</span> 
-    http://localhost:5000/api/advantage
-</p>
+`GET` http://localhost:5000/api/advantage
 
 ```json
 {
@@ -98,17 +78,7 @@ http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle,lucario,lugia,r
 
 ### Examples
 
-<br/>
-<p>
-    <span style="
-        background-color: green;
-        color: white;
-        border-radius: 3px;
-        padding: 4px 8px
-    "
-    >GET</span> 
-    http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle,lucario,lugia,rayquaza,onix&language=es&limit=5
-</p>
+`GET` http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle,lucario,lugia,rayquaza,onix&language=es&limit=5
 
 ```json
 [
@@ -135,17 +105,7 @@ http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle,lucario,lugia,r
 ]
 ```
 
-<br/>
-<p>
-    <span style="
-        background-color: green;
-        color: white;
-        border-radius: 3px;
-        padding: 4px 8px
-    "
-    >GET</span> 
-    http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle&language=ja&limit=5
-</p>
+`GET` http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle&language=ja&limit=5
 
 ```json
 [
@@ -172,17 +132,7 @@ http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle,lucario,lugia,r
 ]
 ```
 
-<br/>
-<p>
-    <span style="
-        background-color: green;
-        color: white;
-        border-radius: 3px;
-        padding: 4px 8px
-    "
-    >GET</span> 
-    http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle&limit=5
-</p>
+`GET` http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle&limit=5
 
 ```json
 [
