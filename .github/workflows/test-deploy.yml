@@ -30,9 +30,11 @@ jobs:
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
+        env:
+          IMAGE_TAG: ${{ github.sha }}
         with:
           push: true
-          tags: ferpart/pokemon-rest-go:latest
+          tags: ferpart/pokemon-rest-go:$IMAGE_TAG
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 
