@@ -1,5 +1,10 @@
 # PokeRest
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" />
+  <img src="https://golang.org/lib/godoc/images/go-logo-blue.svg" />
+</p>
+
 ## About
 
 PokeRest is a [GoLang](https://golang.org/) project that calls the [PokéApi](https://pokeapi.co/). It calls the api to make requests and get results in a json.
