@@ -146,10 +146,31 @@
       },
       "common": {
         "type": "array",
-        "default": [],
-        "items": {
-          "$ref": "#/components/schemas/move"
+        "default": "object",
+        "required": ["name", "language", "pokemon", "moves"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "pokemon": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#components/schemas/pokemon"
+            }
+          },
+          "moves": {
+            "type": "array",
+            "default": [],
+            "$ref": "#/components/schemas/move"
+          }
         }
+      },
+      "pokemon": {
+        "type": "string"
       },
       "move": {
         "type": "object",

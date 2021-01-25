@@ -18,6 +18,7 @@
 - [Types](#types)
   - Unexported
     - [hasAdvantage](#hasadvantage)
+    - [hasCommon](#hascommon)
 
 ## Package
 
@@ -30,7 +31,7 @@ api.
 
 ## FUNCTIONS
 
-### Advantage
+### [Advantage](https://github.com/ferpart/pokerest/blob/aea2044ee852502621b9fb25d61e0286982f2f63/handlers/advantage.go#L35)
 
 ```go
 func Advantage(w http.ResponseWriter, r *http.Request)
@@ -48,7 +49,7 @@ pokemon attacking is using a move of the same type as his:
   over the first one, finally if we get 0 we conclude that both pokemon are on
   equal ground.
 
-### CommonMoves
+### [CommonMoves](https://github.com/ferpart/pokerest/blob/aea2044ee852502621b9fb25d61e0286982f2f63/handlers/common.go#L14)
 
 ```go
 func CommonMoves(w http.ResponseWriter, r *http.Request)
@@ -60,7 +61,7 @@ pokemon can be compared, the language of the moves can be set, and there's
 also a limit of how many moves will be sent that defaults to 10 if no custom
 limit is given.
 
-### damageFrom
+### [damageFrom](https://github.com/ferpart/pokerest/blob/aea2044ee852502621b9fb25d61e0286982f2f63/handlers/advantage.go#L102)
 
 ```go
 func damageFrom(damager helpers.Pokemon, damagee []helpers.Drelations) float64
@@ -72,7 +73,7 @@ relations, the damge value will be multiplied to see how much damage the
 damagee will take from the damaging pokemon. This takes into consideration
 the case in which a pokemon could have two types
 
-### damageTo
+### [damageTo](https://github.com/ferpart/pokerest/blob/aea2044ee852502621b9fb25d61e0286982f2f63/handlers/advantage.go#L76)
 
 ```go
 func damageTo(damager []helpers.Drelations, damagee helpers.Pokemon) float64
@@ -84,7 +85,7 @@ the damage ralations, the damage value will be multiplied to see how much
 damage will be done from the damager to the damagee. This takes into
 consideretion the case in which a pokemon would have two types.
 
-### getMovesInCommon
+### [getMovesInCommon](https://github.com/ferpart/pokerest/blob/aea2044ee852502621b9fb25d61e0286982f2f63/handlers/common.go#L46)
 
 ```go
 func getMovesInCommon(pokeArr []helpers.Pokemon, lan string) []helpers.Elem
@@ -94,16 +95,7 @@ getMovesInCommon will return an array of moves that appear in all of the
 given pokemon movesets. if a language is specified, they'll be translated to
 that language, else they'll be left in english.
 
-### moveInPokemon
-
-```go
-func moveInPokemon(a string, list []helpers.Move) bool
-```
-
-moveInPokemon returns true if a string given to a is found on the given
-list.
-
-### swap
+### [swap](https://github.com/ferpart/pokerest/blob/aea2044ee852502621b9fb25d61e0286982f2f63/handlers/common.go#L95)
 
 ```go
 func swap(i1 int, i2 int, p *[]helpers.Pokemon)
@@ -111,7 +103,7 @@ func swap(i1 int, i2 int, p *[]helpers.Pokemon)
 
 swap swaps two elements of a list.
 
-### translate
+### [translate](https://github.com/ferpart/pokerest/blob/aea2044ee852502621b9fb25d61e0286982f2f63/handlers/common.go#L77)
 
 ```go
 func translate(lan string, move helpers.Elem) helpers.Elem
@@ -121,17 +113,26 @@ translate takes a move, and a language paramater, with that it determines to
 which language the move should be translated to, and returns the move in the
 new language.
 
-### typeInDamage
+### [typeInDamage](https://github.com/ferpart/pokerest/blob/aea2044ee852502621b9fb25d61e0286982f2f63/handlers/advantage.go#L125)
 
 ```go
 func typeInDamage(a string, list []helpers.Elem) bool
 ```
 
+### [moveInPokemon](https://github.com/ferpart/pokerest/blob/aea2044ee852502621b9fb25d61e0286982f2f63/handlers/common.go#L85)
+
+```go
+func moveInPokemon(a string, list []helpers.Move) bool
+```
+
+moveInPokemon returns true if a string given to a is found on the given
+list.
+
 typeInDamage returns true if a string given to a is found on the given list
 
 ## TYPES
 
-### hasAdvantage
+### [hasAdvantage](https://github.com/ferpart/pokerest/blob/aea2044ee852502621b9fb25d61e0286982f2f63/handlers/advantage.go#L17)
 
 ```go
 type hasAdvantage struct {
@@ -152,3 +153,21 @@ advantage over the second. It has the following fields:
 - DamageFrom: is the damage multiplier that the first pokemon can recieve from the second.
 - Total: is the difference between the DamageTo and DamageFrom.
 - Description: is the description of the shown results.
+
+### hasCommon
+
+```go
+type hasCommon struct {
+	Name string `json:"name"`
+	Language string `json:"language"`
+	Pokemon []string `json:"pokemon"`
+	Moves []helpers.Elem `json:"moves"`
+}
+```
+
+hasCommon is a struct that stores all the common moves in a struct a list of common moves, as well as the following attributes:
+
+- Name: name of the request type
+- Language: language in which the common moves were requested
+- Pokemon: pokemon whose common moves were requested
+- Moves: moves in common for pokemon

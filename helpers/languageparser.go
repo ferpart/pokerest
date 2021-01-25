@@ -19,6 +19,10 @@ func GetLanguage(res interface{}) string {
 	lan := &Elem{}
 	json.NewDecoder(response.Body).Decode(lan)
 
+	if lan.Name == "" {
+		lan.Name = "en"
+	}
+
 	return lan.Name
 
 }

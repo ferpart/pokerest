@@ -7,6 +7,19 @@ import (
 	"strings"
 )
 
+// hasCommon is a struct that stores all the common moves in a struct a list of common moves,
+// as well as the following attributes:
+//		- Name:		name of the request type
+//		- Language:	language in which the common moves were requested
+//		- Pokemon:	pokemon whose common moves were requested
+//		- Moves:	moves in common for pokemon
+type hasCommon struct {
+	Name     string         `json:"name"`
+	Language string         `json:"language"`
+	Pokemon  []string       `json:"pokemon"`
+	Moves    []helpers.Elem `json:"moves"`
+}
+
 // CommonMoves returns as a json format an array of all the moves that the given pokemon have in
 // common. Depending on the flags given, different pokemon can be compared, the language of the
 // moves can be set, and there's also a limit of how many moves will be sent that defaults to 10
@@ -21,10 +34,13 @@ func CommonMoves(w http.ResponseWriter, r *http.Request) {
 	)
 
 	language := r.URL.Query().Get(lanKey)
-	pokeNames := strings.Split(r.URL.Query().Get(pokeKey), ",")
-	pokeArr := helpers.GetPokemon(pokeNames)
 
-	movesInCommon := getMovesInCommon(pokeArr, language)
+	common := hasCommon{
+		Name:    "Common",
+		Pokemon: strings.Split(r.URL.Query().Get(pokeKey), ","),
+	}
+
+	common = getMovesInCommon(common, language)
 
 	limit, _ := strconv.Atoi(r.URL.Query().Get(limitKey))
 
@@ -32,19 +48,21 @@ func CommonMoves(w http.ResponseWriter, r *http.Request) {
 		limit = defaultLimit
 	}
 
-	if len(movesInCommon) > limit {
-		movesInCommon = movesInCommon[:limit]
+	if len(common.Moves) > limit {
+		common.Moves = common.Moves[:limit]
 	}
 
-	helpers.SendJSON(w, http.StatusOK, movesInCommon)
+	helpers.SendJSON(w, http.StatusOK, common)
 
 }
 
-// getMovesInCommon will return an array of moves that appear in all of the given pokemon movesets.
-// if a language is specified, they'll be translated to that language, else they'll be left in
-// english.
-func getMovesInCommon(pokeArr []helpers.Pokemon, lan string) []helpers.Elem {
-	language := helpers.GetLanguage(lan)
+// getMovesInCommon will return a hasCommon object with the moves that appear in all of the given
+//pokemon movesets. If a language is specified, they'll be translated to that language, else they'll be
+//left in english.
+func getMovesInCommon(commonM hasCommon, lan string) hasCommon {
+	pokeArr := helpers.GetPokemon(commonM.Pokemon)
+	commonM.Language = helpers.GetLanguage(lan)
+
 	movesInCommon := []helpers.Elem{}
 
 	smallest := 0
@@ -64,18 +82,19 @@ func getMovesInCommon(pokeArr []helpers.Pokemon, lan string) []helpers.Elem {
 			}
 		}
 		if common {
-			move := translate(language, m.Move)
+			move := translate(commonM.Language, m.Move)
 			movesInCommon = append(movesInCommon, move)
 		}
 	}
 
-	return movesInCommon
+	commonM.Moves = movesInCommon
+	return commonM
 }
 
 // translate takes a move, and a language paramater, with that it determines to which language the
 // move should be translated to, and returns the move in the new language.
 func translate(lan string, move helpers.Elem) helpers.Elem {
-	if lan != "" && lan != "en" {
+	if lan != "en" {
 		move = helpers.GetMove(move.URL, lan)
 	}
 	return move

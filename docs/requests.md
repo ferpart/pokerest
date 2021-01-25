@@ -2,8 +2,8 @@
 
 The api specification can be seen in both `json` and `yaml` format in the following urls:
 
-- [json](https://github.com/ferpart/pokerest/tree/master/Docs/pokerest.json)
-- [yaml](https://github.com/ferpart/pokerest/tree/master/Docs/pokerest.yaml)
+- [json](https://github.com/ferpart/pokerest/blob/master/Docs/pokerest.json)
+- [yaml](https://github.com/ferpart/pokerest/blob/master/docs/pokerest.yaml)
 
 ## Endpoints
 
@@ -83,80 +83,95 @@ http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle,lucario,lugia,r
 `GET` http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle,lucario,lugia,rayquaza,onix&language=es&limit=5
 
 ```json
-[
-  {
-    "name": "Golpe Cabeza",
-    "url": "https://pokeapi.co/api/v2/move/29/"
-  },
-  {
-    "name": "Fuerza",
-    "url": "https://pokeapi.co/api/v2/move/70/"
-  },
-  {
-    "name": "Tóxico",
-    "url": "https://pokeapi.co/api/v2/move/92/"
-  },
-  {
-    "name": "Doble Equipo",
-    "url": "https://pokeapi.co/api/v2/move/104/"
-  },
-  {
-    "name": "Descanso",
-    "url": "https://pokeapi.co/api/v2/move/156/"
-  }
-]
+{
+  "name": "Common",
+  "language": "es",
+  "pokemon": ["charizard", "squirtle", "lucario", "lugia", "rayquaza", "onix"],
+  "moves": [
+    {
+      "name": "Golpe Cabeza",
+      "url": "https://pokeapi.co/api/v2/move/29/"
+    },
+    {
+      "name": "Fuerza",
+      "url": "https://pokeapi.co/api/v2/move/70/"
+    },
+    {
+      "name": "Tóxico",
+      "url": "https://pokeapi.co/api/v2/move/92/"
+    },
+    {
+      "name": "Doble Equipo",
+      "url": "https://pokeapi.co/api/v2/move/104/"
+    },
+    {
+      "name": "Descanso",
+      "url": "https://pokeapi.co/api/v2/move/156/"
+    }
+  ]
+}
 ```
 
 `GET` http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle&language=ja&limit=5
 
 ```json
-[
-  {
-    "name": "メガトンパンチ",
-    "url": "https://pokeapi.co/api/v2/move/5/"
-  },
-  {
-    "name": "メガトンキック",
-    "url": "https://pokeapi.co/api/v2/move/25/"
-  },
-  {
-    "name": "ずつき",
-    "url": "https://pokeapi.co/api/v2/move/29/"
-  },
-  {
-    "name": "のしかかり",
-    "url": "https://pokeapi.co/api/v2/move/34/"
-  },
-  {
-    "name": "とっしん",
-    "url": "https://pokeapi.co/api/v2/move/36/"
-  }
-]
+{
+  "name": "Common",
+  "language": "ja",
+  "pokemon": ["charizard", "squirtle"],
+  "moves": [
+    {
+      "name": "メガトンパンチ",
+      "url": "https://pokeapi.co/api/v2/move/5/"
+    },
+    {
+      "name": "メガトンキック",
+      "url": "https://pokeapi.co/api/v2/move/25/"
+    },
+    {
+      "name": "ずつき",
+      "url": "https://pokeapi.co/api/v2/move/29/"
+    },
+    {
+      "name": "のしかかり",
+      "url": "https://pokeapi.co/api/v2/move/34/"
+    },
+    {
+      "name": "とっしん",
+      "url": "https://pokeapi.co/api/v2/move/36/"
+    }
+  ]
+}
 ```
 
 `GET` http://localhost:5000/api/commonMoves?pokemon=charizard,squirtle&limit=5
 
 ```json
-[
-  {
-    "name": "mega-punch",
-    "url": "https://pokeapi.co/api/v2/move/5/"
-  },
-  {
-    "name": "mega-kick",
-    "url": "https://pokeapi.co/api/v2/move/25/"
-  },
-  {
-    "name": "headbutt",
-    "url": "https://pokeapi.co/api/v2/move/29/"
-  },
-  {
-    "name": "body-slam",
-    "url": "https://pokeapi.co/api/v2/move/34/"
-  },
-  {
-    "name": "take-down",
-    "url": "https://pokeapi.co/api/v2/move/36/"
-  }
-]
+{
+  "name": "Common",
+  "language": "en",
+  "pokemon": ["charizard", "squirtle"],
+  "moves": [
+    {
+      "name": "mega-punch",
+      "url": "https://pokeapi.co/api/v2/move/5/"
+    },
+    {
+      "name": "mega-kick",
+      "url": "https://pokeapi.co/api/v2/move/25/"
+    },
+    {
+      "name": "headbutt",
+      "url": "https://pokeapi.co/api/v2/move/29/"
+    },
+    {
+      "name": "body-slam",
+      "url": "https://pokeapi.co/api/v2/move/34/"
+    },
+    {
+      "name": "take-down",
+      "url": "https://pokeapi.co/api/v2/move/36/"
+    }
+  ]
+}
 ```

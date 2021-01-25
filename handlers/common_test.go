@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"github.com/ferpart/pokerest/helpers"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -10,16 +9,20 @@ func TestGetMovesInCommon(t *testing.T) {
 	t.Run("Should return a Elem array with all elements in common", func(t *testing.T) {
 		language := "es"
 		pokemon := []string{"charizard", "squirtle", "lucario", "lugia", "rayquaza", "onix"}
-		pokeArr := helpers.GetPokemon(pokemon)
-		movesInCommon := getMovesInCommon(pokeArr, language)
 
-		if assert.NotEmpty(t, pokeArr) {
-			assert.Equal(t, "onix", pokeArr[0].Name)
-			assert.Equal(t, len(pokemon), len(pokeArr))
+		common := hasCommon{
+			Name:    "Common",
+			Pokemon: pokemon,
 		}
 
-		if assert.NotEmpty(t, movesInCommon) {
-			assert.Equal(t, "Golpe Cabeza", movesInCommon[0].Name)
+		common = getMovesInCommon(common, language)
+
+		if assert.NotEmpty(t, common.Language) {
+			assert.Equal(t, "es", common.Language)
+		}
+
+		if assert.NotEmpty(t, common.Moves) {
+			assert.Equal(t, "Golpe Cabeza", common.Moves[0].Name)
 		}
 	})
 
