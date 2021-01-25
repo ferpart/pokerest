@@ -1,0 +1,109 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: PokeRest
+  license:
+    name: MIT
+servers:
+  - url: http://localhost:5000/api
+paths:
+  /advantage:
+    get:
+      summary: Advantage of pokemon to other
+      parameters:
+        - name: pokemon
+          in: query
+          description: Pokemon to compare (2 exactly) separated by comma
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A json with the reponse
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/advantage'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/advantage'
+  /commonMoves:
+    get:
+      summary: Moves in common for pokemon
+      parameters:
+        - name: pokemon
+          in: query
+          description: Pokemon to compare 1 to n separated by comma
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: query
+          description: Language to translate (if non given or non existent defaults to en)
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: How many items to return at a time (defaults to 10 if given 0 or no value)
+          required: false
+          schema:
+            type: int
+      responses:
+        '200':
+          description: A json with the reponse
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/common'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/common'
+components:
+  schemas:
+    advantage:
+      type: object
+      required:
+        - name
+        - advantage
+        - damageTo
+        - damageFrom
+        - total
+        - description
+      properties:
+        name:
+          type: string
+        advantage:
+          type: boolean
+        damageTo:
+          type: float
+          format: float64
+        damageFrom:
+          type: float
+          format: float64
+        total:
+          type: float
+          format: float64
+        description:
+          type: string
+    common:
+      type: array
+      default: []
+      items:
+        $ref: '#/components/schemas/move'
+    move:
+      type: object
+      required:
+        - name
+        - url
+      properties:
+        name:
+          type: string
+        url:
+          type: string
