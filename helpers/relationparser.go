@@ -1,4 +1,3 @@
-// Package helpers stores all the helper functions that are used for parsing requests to the api.
 package helpers
 
 import (

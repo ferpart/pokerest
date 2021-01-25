@@ -1,4 +1,3 @@
-// Package handlers has the methods used for handling the calls done to the api.
 package handlers
 
 import (
