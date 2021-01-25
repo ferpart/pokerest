@@ -58,8 +58,9 @@ jobs:
         uses: kodermax/kubectl-aws-eks@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          IMAGE_TAG: ${{ github.sha }}
         with:
-          args: set image deployments/pokemonrest-deployment pokemonrest=docker.io/ferpart/pokemon-rest-go:latest
+          args: set image deployments/pokemonrest-deployment pokemonrest=docker.io/ferpart/pokemon-rest-go:$IMAGE_TAG
 
       - name: verify deployment
         uses: kodermax/kubectl-aws-eks@master
