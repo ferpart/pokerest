@@ -65,4 +65,19 @@ PokeRest is a [GoLang](https://golang.org/) project that calls the [PokéApi](ht
 
 ## Documentation
 
-Coming Soon.
+PokeRest is a [GoLang](https://golang.org/) project that calls the [PokéApi](https://pokeapi.co/). It calls the api to make requests and get results in a json.
+
+Pokerest uses the [PokéApi](https://pokeapi.co/) for doing two things depending on the api called.
+
+1. Given two pokemon we return if the first has an advantage over the second using its type as the determinant.
+2. Given two or more pokemon, we return the moves they have in common. A limit of how many moves, as well as a language can be provided for this endpoint.
+
+The program has a total of 3 packages each documented bellow:
+
+- [main](https://github.com/ferpart/pokerest/tree/master/Docs/main.md)
+- [handlers](https://github.com/ferpart/pokerest/tree/master/Docs/handlers.md)
+- [helpers](https://github.com/ferpart/pokerest/tree/master/Docs/helpers.md)
+
+The requests have to be called in the following manner:
+
+- [requests](https://github.com/ferpart/pokerest/tree/master/Docs/requests.md)
