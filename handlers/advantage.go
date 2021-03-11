@@ -83,11 +83,12 @@ func damageTo(damager []helpers.Drelations, damagee helpers.Pokemon) float64 {
 				if typeInDamage(t2.Ptype.Name, t1.Drelation.DoubleDto) {
 					damage *= 2
 					continue
-				} else if typeInDamage(t2.Ptype.Name, t1.Drelation.HalfDfrom) {
+				} else if typeInDamage(t2.Ptype.Name, t1.Drelation.HalfDto) {
 					damage *= 0.5
 					continue
-				} else if typeInDamage(t2.Ptype.Name, t1.Drelation.NoDfrom) {
+				} else if typeInDamage(t2.Ptype.Name, t1.Drelation.NoDto) {
 					damage *= 0
+                                        return damage
 				}
 			}
 		}
@@ -114,6 +115,7 @@ func damageFrom(damager helpers.Pokemon, damagee []helpers.Drelations) float64 {
 					continue
 				} else if typeInDamage(t2.Ptype.Name, t1.Drelation.NoDfrom) {
 					damage *= 0
+                                        return damage
 				}
 			}
 		}
